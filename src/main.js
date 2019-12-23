@@ -42,6 +42,7 @@ nfc.on('reader', async reader => {
     };
     const tx = new EthTx(txParam);
     const hash = tx.hash(false);
+    console.log(`TX Hash to be sign:        0x${hash.toString('hex').toUpperCase()}`);
     const sig = await chip.signTransactionHash(tx.getChainId(), hash);
     console.log(`TX Signature:              r = 0x${sig.r}, s = 0x${sig.s}, v = ${sig.v}`);
 
